@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap: ws: https://ssl.gstatic.com;style-src 'self' 'unsafe-inline' data: blob:;media-src *;img-src * 'self' data: content:;script-src * 'unsafe-inline' 'unsafe-eval' data: blob:;">
+
+    <link rel="stylesheet" type="text/css"  href="includes/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"  href="includes/montserrat-webfont-master/css/montserrat-webfont.min.css">
+    <link rel="stylesheet" type="text/css"  href="includes/font-awesome-4.7.0/css/font-awesome.min.css">
+ 
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/theme.css" />
+    <link rel="stylesheet" type="text/css" href="includes/animate.css" />
+    <title> Coletor - Census Instituto de Pequisas</title>
+</head>
+
+<body>
+    <div class="rot-c-alert"></div>
+    
+    <div class="page animated zoomIn rot-menu-geral" id="index">
+        <div class="mx-auto" style="width: 200px;">
+            <img src="img/logo-census.png" width="200" /> 
+        </div>
+        <div class="p-4">
+            <ul class="menu-geral">
+                <li onclick="init.openPage('index');"> Início </li>
+                <li onclick="api.homologarColetor();"> Homologar </li>
+                <li onclick="init.openPage('pesquisas');"> Pesquisas </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="page animated hidden" id="pesquisas">
+
+        <div class="bg-black-md app-head fixed-top animated">
+            <i class="fa pull-left app-back"></i>
+            Pesquisas
+            <span class="fa fa-bars menu-icon pull-right " onclick="init.openPage('index');"></span>
+        </div>
+        <div class="container-fluid clearfix animated">
+            <div class="row">
+                <div class="col-12 py-4" id="load-pesquisas">   
+                </div>
+            </div>
+        </div>
+        <a class="spr-btn fixed-bottom" onclick="api.syncDownPesquisas()"> Baixar pesquisas </a>
+    </div>
+    
+
+    <div class="page animated hidden" id="locais">
+
+        <div class="bg-black-md app-head fixed-top animated">
+            <i class="fa fa-arrow-left pull-left app-back"  onclick="init.openPage('pesquisas',true)"></i>
+            Locais
+            <span class="fa fa-bars menu-icon pull-right " onclick="init.openPage('index');"></span>
+        </div>
+        <div class="container-fluid clearfix animated">
+            <div class="row pt-3">
+                <div class="col-12 py-2" id="load-locais"></div>
+                <div class="col-12 py-2" id="load-locais-extras"></div>
+            </div>
+            <div class="row py-2 mb-2 text-center">
+                <a class="btn btn-link text-danger mx-auto" onclick="api.syncUpLocal()"> Sincronizar todos os locais </a>
+            </div>
+             <div class="row py-2 mb-4 text-center">
+                <a class="btn btn-link text-danger mx-auto" onclick="controller.addLocalExtra();"> Adicionar local extra </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page animated hidden" id="local">
+
+        <div class="bg-black-md app-head fixed-top animated">
+            <i class="fa fa-arrow-left pull-left app-back"  onclick="init.openPage('locais',true);"></i>
+            Coleta 
+            <span class="fa fa-bars menu-icon pull-right " onclick="init.openPage('index');"></span>
+        </div>
+        <div class="container-fluid clearfix animated ">
+            
+            <div class="" id="">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <span class="contador-label nomedobairro">Coletas realizadas</span>
+                        <div class="contador numcoletas"></div>
+                        <span class="contador-label ">Coletas realizadas</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 py-3 my-3 ">
+                        <div class="app-menu">
+                            <ul>
+                                <li> <a href="#" onclick="init.novaColeta()">Nova coleta</a> </li>
+                                <!-- <li> <a href="#" onclick="api.syncUpLocal()">Sincronizar Local</a> </li> -->
+                                <li> <a href="#" onclick="init.openPage('locais',true)">Sair</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page animated hidden" id="coleta">
+        <div class="bg-black-md app-head fixed-top animated"> Coleta em andamento <i class="fa fa-close menu-icon pull-right"  onclick="init.openPage('local')"></i> </div>
+        <div class="container-coleta clearfix animated">
+            <div id="questoes"></div>
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="includes/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="includes/fastclick.min.js"></script>
+    <script type="text/javascript" src="includes/bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="includes/tether.min.js"></script>
+    <script type="text/javascript" src="includes/jquery.serializejson.js"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/model.js"></script>
+    <script type="text/javascript" src="js/view.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        init.initialize();
+    </script>
+
+ 
+    
+
+</body>
+
+</html>
