@@ -11,6 +11,7 @@ var init = {
     initialize: function() {
         this.bindEvents()
     },
+    
     onDeviceReady: function() {
         
         var attachFastClick = Origami.fastclick
@@ -24,34 +25,38 @@ var init = {
         	localStorage.setItem('deviceID', device.uuid)
         }
 
-         
+        bd.iniciarBanco()
 
+        init.getGeoLocation()
+
+
+    },
+    getGeoLocation: function(){
         navigator.geolocation.getCurrentPosition(
             function(position){
-
-                alert('pegando posição')
-                
+                            
             },
             function(error){
-                alert('erro')
-                console.log(error)
-                // document.addEventListener("deviceready",function() {
-                //   cordova.dialogGPS("Seu GPS está desabilitado",//message
-                //                     "Precisamos usar o GPS.",//description
-                //                     function(buttonIndex){//callback
-                //                       switch(buttonIndex) {
-                //                         case 0: break;//cancel
-                //                         case 1: break;//neutro option
-                //                         case 2: break;//user go to configuration
-                //                       }},
-                //                       "Por favor vamos ligar.",//title
-                //                       ["Cancelar","Depois","Ligar"]);//buttons
-                //  });
+
+                init.gpsON()
             }
         )
 
-        bd.iniciarBanco()
+    },
+    gpsON: function(){
 
+        cordova.plugins.diagnostic.isLocationEnabledSetting(function(enabled){
+            if(enabled)
+            {
+                //alert("Location Setting is enabled");
+            }
+            else
+            {
+                cordova.plugins.diagnostic.switchToLocationSettings()
+            }
+        }, function(error){
+            alert("The following error occurred: "+error);
+        })
     },
     onlineConnection: function() {
 
