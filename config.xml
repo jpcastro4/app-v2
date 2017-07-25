@@ -43,5 +43,4 @@
     <splash gap:platform="android" gap:qualifier="port-xhdpi" src="res/screens/android/screen-xhdpi-portrait.png" />
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="AutoHideSplashScreen" value="true" />
-    <plugin name="cordova-sqlite-storage" spec="~2.0.4" />
 </widget>

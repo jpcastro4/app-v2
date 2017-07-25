@@ -49,14 +49,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-        "id": "cordova-sqlite-storage.SQLitePlugin",
-        "pluginId": "cordova-sqlite-storage",
-        "clobbers": [
-            "SQLitePlugin"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-badge/www/badge.js",
         "id": "cordova-plugin-badge.Badge",
         "pluginId": "cordova-plugin-badge",
@@ -117,7 +109,6 @@ module.exports.metadata =
     "cordova-plugin-notification": "1.3.7",
     "cordova-plugin-vibration": "2.1.5",
     "cordova.plugins.diagnostic": "3.6.5",
-    "cordova-sqlite-storage": "2.0.4",
     "cordova-plugin-app-event": "1.2.0",
     "cordova-plugin-badge": "0.8.1",
     "cordova-plugin-compat": "1.1.0",

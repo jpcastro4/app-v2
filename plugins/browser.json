@@ -30,9 +30,6 @@
         },
         "cordova.plugins.diagnostic": {
             "PACKAGE_NAME": "com.censuspesquisas.coletor"
-        },
-        "cordova-sqlite-storage": {
-            "PACKAGE_NAME": "com.censuspesquisas.coletor"
         }
     },
     "dependent_plugins": {
