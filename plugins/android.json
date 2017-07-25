@@ -24,9 +24,6 @@
             "XWALK_MULTIPLEAPK": "true",
             "PACKAGE_NAME": "com.censuspesquisas.coletor"
         },
-        "cordova-sqlite-storage": {
-            "PACKAGE_NAME": "com.censuspesquisas.coletor"
-        },
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.censuspesquisas.coletor"
         },
@@ -37,6 +34,9 @@
             "PACKAGE_NAME": "com.censuspesquisas.coletor"
         },
         "cordova.plugins.diagnostic": {
+            "PACKAGE_NAME": "com.censuspesquisas.coletor"
+        },
+        "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.censuspesquisas.coletor"
         }
     },

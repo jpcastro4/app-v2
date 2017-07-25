@@ -28,10 +28,10 @@
         "cordova-plugin-vibration": {
             "PACKAGE_NAME": "com.censuspesquisas.coletor"
         },
-        "cordova-sqlite-storage": {
+        "cordova.plugins.diagnostic": {
             "PACKAGE_NAME": "com.censuspesquisas.coletor"
         },
-        "cordova.plugins.diagnostic": {
+        "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.censuspesquisas.coletor"
         }
     },

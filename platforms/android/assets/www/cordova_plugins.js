@@ -23,14 +23,6 @@ module.exports = [
         "runs": true
     },
     {
-        "id": "cordova-sqlite-storage.SQLitePlugin",
-        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-        "pluginId": "cordova-sqlite-storage",
-        "clobbers": [
-            "SQLitePlugin"
-        ]
-    },
-    {
         "id": "cordova-plugin-vibration.notification",
         "file": "plugins/cordova-plugin-vibration/www/vibration.js",
         "pluginId": "cordova-plugin-vibration",
@@ -105,6 +97,14 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.diagnostic"
         ]
+    },
+    {
+        "id": "cordova-sqlite-storage.SQLitePlugin",
+        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+        "pluginId": "cordova-sqlite-storage",
+        "clobbers": [
+            "SQLitePlugin"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -115,14 +115,14 @@ module.exports.metadata =
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-geolocation": "2.4.3",
     "cordova-plugin-crosswalk-webview": "2.3.0",
-    "cordova-sqlite-storage": "2.0.4",
     "cordova-plugin-vibration": "2.1.5",
     "cordova-plugin-app-event": "1.2.0",
     "cordova-plugin-badge": "0.8.1",
     "de.appplant.cordova.plugin.local-notification": "0.8.5",
     "cordova-plugin-notification": "1.3.7",
     "cordova-plugin-dialogs": "1.3.3",
-    "cordova.plugins.diagnostic": "3.6.5"
+    "cordova.plugins.diagnostic": "3.6.5",
+    "cordova-sqlite-storage": "2.0.4"
 };
 // BOTTOM OF METADATA
 });
